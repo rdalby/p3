@@ -1,6 +1,6 @@
 # Project 3
 + By: Rachel Dalby
-+ Production URL: <http://p3.yourdomain.com>
++ Production URL: <http://p3.dwarachel.me>
 
 ## Outside resources
 *Your list of outside resources go here*
