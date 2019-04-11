@@ -1,5 +1,5 @@
 @section('formTest')
-    <form method='POST' action='/public/media/media-process'>
+    <form method='POST' action='/media/media-process'>
         @csrf
         <div class='instructions'>
             * Required field
