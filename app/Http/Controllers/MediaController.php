@@ -60,19 +60,19 @@ class MediaController extends Controller
 			if ($bookCheck) {
 				$mediaResults = self::mediaDecode('book', $mood, $mediaResults);
 			}
-			if($comicCheck){
+			if ($comicCheck) {
 				$mediaResults = self::mediaDecode('comic', $mood, $mediaResults);
 			}
-			if ($videoCheck){
+			if ($videoCheck) {
 				$mediaResults = self::mediaDecode('video', $mood, $mediaResults);
 			}
-			if($musicCheck){
+			if ($musicCheck) {
 				$mediaResults = self::mediaDecode('music', $mood, $mediaResults);
 			}
 		}
 
-		# Redirect back to the search page w/ the searchTerm *and* searchResults (if any) stored in the session
-		# Ref: https://laravel.com/docs/redirects#redirecting-with-flashed-session-data
+		# Redirect back to the media page with the results if any
+
 		return redirect('/media')->with([
 			'userName' => $userName,
 			'mood' => $mood,
@@ -90,11 +90,12 @@ class MediaController extends Controller
 	 * @param array $mediaResults
 	 * @return array
 	 */
-	public function mediaDecode(String $mediaType, String $userMood, Array $mediaResults){
+	public function mediaDecode(String $mediaType, String $userMood, Array $mediaResults)
+	{
 
-		switch($mediaType){
+		switch ($mediaType) {
 			case 'book':
-			$path = '/Books.json';
+				$path = '/Books.json';
 				break;
 			case 'video':
 				$path = '/Videos.json';
@@ -110,19 +111,16 @@ class MediaController extends Controller
 				break;
 		}
 
-		# Open the books.json data file
-		# database_path() is a Laravel helper to get the path to the database folder
-		# See https://laravel.com/docs/helpers for other path related helpers
+		// It will open each json file per media type
+		// database_path() is a Laravel helper to get the path to the database folder
+		// See https://laravel.com/docs/helpers for other path related helpers
 		$mediaData = file_get_contents(database_path($path));
 
-		# Decode the book JSON data into an array
-		# Nothing fancy here; just a built in PHP method
+		// Decode the book JSON data into an array
 		$medias = json_decode($mediaData, true);
-		# Loop through all the book data, looking for matches
-		# This code was taken from v0 of foobooks we built earlier in the semester
+		// Loop through all the media data from the json files for matches
 		foreach ($medias as $mood => $media) {
 			$match = $mood == $userMood;
-
 
 
 			# If it was a match, add it to our results

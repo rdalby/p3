@@ -15,7 +15,7 @@
 <section>
     <table>
         <tr>
-                @yield('content')
+            @yield('content')
         </tr>
 
     </table>

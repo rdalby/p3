@@ -6,7 +6,7 @@
         </div>
         <fieldset>
             <label>* Name
-                <input type='text' name='userName' value= '{{ $userName ?? ''  }}'>
+                <input type='text' name='userName' value='{{ $userName ?? ''  }}'>
                 @include('error', ['fieldName' => 'userName'])
             </label><br>
             <label>* Mood
@@ -23,7 +23,8 @@
         <fieldset>
             <label>Media Preference:</label><br>
             <label>
-                <input type='checkbox' name='comicCheck' @isset($comicCheck){{ ($comicCheck) ? 'checked' : '' }}@endisset>
+                <input type='checkbox'
+                       name='comicCheck' @isset($comicCheck){{ ($comicCheck) ? 'checked' : '' }}@endisset>
                 Comic
             </label>
             <label>
@@ -31,11 +32,13 @@
                 Book
             </label>
             <label>
-                <input type='checkbox' name='videoCheck' @isset($videoCheck){{ ($videoCheck) ? 'checked' : '' }}@endisset>
+                <input type='checkbox'
+                       name='videoCheck' @isset($videoCheck){{ ($videoCheck) ? 'checked' : '' }}@endisset>
                 Video
             </label>
             <label>
-                <input type='checkbox' name='musicCheck' @isset($musicCheck){{ ($musicCheck) ? 'checked' : '' }}@endisset>
+                <input type='checkbox'
+                       name='musicCheck' @isset($musicCheck){{ ($musicCheck) ? 'checked' : '' }}@endisset>
                 Music
             </label>
         </fieldset>
